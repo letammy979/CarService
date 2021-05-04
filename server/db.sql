@@ -2,8 +2,9 @@ CREATE DATABASE CarService;
 
 CREATE TABLE appt_table(
   _id serial PRIMARY KEY,
-  date DATE,
-  time TIME
+  date DATE NOT NULL,
+  time TIME NOT NULL,
+  status VARCHAR
 );
 
 CREATE TABLE service_table(

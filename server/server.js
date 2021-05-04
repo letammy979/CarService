@@ -20,23 +20,42 @@ app.get('/getAllAppts', apptDetailsControllers.getAllAppts,
     return res.status(200).json(res.locals.allAppts);
 })
 
-app.post('/addAppt', apptControllers.addAppt,
+app.post('/addAppt', apptControllers.addAppt, apptDetailsControllers.addDetails,
   (req, res) => {
     console.log('addAppt endpoint');
     return res.status(200).send('addAppt success');
 });
 
-app.post('/addDetails', apptDetailsControllers.addDetails,
-  (req, res) => {
-    console.log('addDetails endpoint');
-    return res.status(200).send('addDetails success');
-});
-
-app.delete('/deleteAppt', apptControllers.deleteAppt,
+app.delete('/deleteAppt', apptDetailsControllers.deleteAppt, apptControllers.deleteAppt,
   (req, res) => {
     console.log('deleteAppt endpoint');
     return res.status(200).send('deleteAppt success');
-})
+});
+
+app.put('/updateStatus', apptControllers.updateStatus,
+  (req, res) => {
+    console.log('updateStatus endpoint');
+    return res.status(200).send('updateStatus success');
+});
+
+app.get('/getOneAppt', apptDetailsControllers.getOneAppt,
+  (req, res) => {
+    console.log('getOneAppt endpoint');
+    return res.status(200).json(res.locals.oneAppt);
+});
+
+app.get('/getRangeAppts', apptDetailsControllers.getRangeAppts,
+  (req, res) => {
+    console.log('getRangeAppts endpoint');
+    return res.status(200).json(res.locals.rangeAppts);
+  }
+);
+
+app.post('/addRandAppt', apptControllers.addRandAppt,
+  (req, res) => {
+    console.log('addRandAppt endpoint');
+    return res.status(200).send('addRandAppt success');
+});
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
