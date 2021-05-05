@@ -6,5 +6,5 @@ Fork and clone the repository.
 
 Install dependencies
 
-`code` npm install
+`npm install`
 
