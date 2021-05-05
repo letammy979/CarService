@@ -10,7 +10,14 @@ const config = {
   port: 5432
 };
 
-const pool = new Pool(config);
+// INSERT URI HERE
+const PG_URI = '';
+
+// const pool = new Pool(config);
+
+const pool = new Pool({
+  connectionString: PG_URI
+});
 
 pool.on('error', function (err, client) {
   console.error('idle client error', err.message, err.stack);

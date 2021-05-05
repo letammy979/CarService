@@ -1,4 +1,4 @@
-CREATE DATABASE CarService;
+-- // CREATE DATABASE CarService;
 
 CREATE TABLE appt_table(
   _id serial PRIMARY KEY,
@@ -18,7 +18,7 @@ INSERT INTO service_table(service_name, service_price) VALUES
   ('Brakes check', 30),
   ('Tires rotation', 320),
   ('Battery check', 100),
-  ('Transmission flush', 50)
+  ('Transmission flush', 50);
 
 CREATE TABLE appt_details(
   _id serial PRIMARY KEY,

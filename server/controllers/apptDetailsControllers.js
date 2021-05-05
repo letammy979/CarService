@@ -11,10 +11,9 @@ const apptDetailsControllers = {
     // loop through service array
     // on each iteration, add curr service element to the db
     for (let i = 0; i < services.length; i++) {
-      db.query({
-        text: `INSERT INTO appt_details (appt_id, service_id) VALUES ((SELECT _id FROM appt_table WHERE date = $1 AND time = $2), ${services[i]})`,
-        values: [req.body.date, req.body.time]
-      })
+      db.query(`INSERT INTO appt_details (appt_id, service_id) VALUES ((SELECT _id FROM appt_table WHERE date = $1 AND time = $2), ${services[i]})`,
+        [req.body.date, req.body.time]
+      )
       .catch(err => {
         return next({
           log: 'error in addDetails controller',

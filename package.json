@@ -4,11 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server/server.js",
-    "dev": "nodemon server/server.js",
-    "docker:build": "docker build -t carservice/cs-prod",
-    "docker:build_db": "docker build -t carservice/cs-postgres -f Dockerfile-postgres",
+    "test": "NODE_ENV=test jest --detectOpenHandles",
+    "start": "NODE_ENV=production node server/server.js",
+    "dev": "NODE_ENV=development nodemon server/server.js",
+    "docker:build": "docker build -t carservice/cs-prod .",
+    "docker:build_db": "docker build -t carservice/cs-postgres -f Dockerfile-postgres .",
     "docker:start": "docker-compose -f docker-compose.yml up"
     
   },

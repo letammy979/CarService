@@ -6,6 +6,8 @@ const app = express();
 const apptControllers = require('./controllers/apptControllers');
 const apptDetailsControllers = require('./controllers/apptDetailsControllers');
 
+const isTest = process.env.NODE_ENV === 'test';
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -73,9 +75,16 @@ app.use((err, req, res, next) => {
   };
   const errorObj = Object.assign({}, defaultError, err);
   console.log(errorObj.log);
+  console.log(errorObj.message);
   return res.status(errorObj.status).json(errorObj.message);
 });
 
-app.listen(PORT, () => {
-  console.log(`Listening on port ${PORT}...`);
-});
+if (!isTest) {
+  app.listen(PORT, () => {
+    console.log(`Listening on port ${PORT}...`);
+  });
+} else {
+  console.log('Testing...');
+}
+
+module.exports = app;

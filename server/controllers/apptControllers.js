@@ -6,10 +6,10 @@ const apptControllers = {
    * @description adds a new appointment to the appt table
   */
    addAppt: (req, res, next) => {
-    db.query({
-      text: 'INSERT INTO appt_table (date, time) VALUES ($1, $2)', 
-      values: [req.body.date, req.body.time]
-    })
+    db.query(
+      'INSERT INTO appt_table (date, time) VALUES ($1, $2)', 
+      [req.body.date, req.body.time]
+    )
     .then(() => {
       return next();
     })

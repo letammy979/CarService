@@ -5,11 +5,11 @@ services:
     container_name: "cs-test"
     ports:
       - "3000:3000"
-    volumes: [./usr/src/app, node_modules:/usr/src/app/node_modules]
+    volumes: [.:/usr/src/app, node_modules:/usr/src/app/node_modules]
     command: "npm run test"
     depends_on: [postgres-db-test]
   postgres-db-test:
-    image: "carservice/cs-postgres"
+    image: "carservice/cs-postgres-test"
     container_name: "cs-test-database"
     environment: ["POSTGRES_PASSWORD=admin", "POSTGRES_USER=csadmin", "POSTGRES_DB=csdb"]
     volumes: [test-db-volume:/var/lib/postgresql/data]
