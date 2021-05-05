@@ -8,3 +8,5 @@ Fork and clone the repository.
 
 `npm install`
 
+### Run the application
+`npm start`
