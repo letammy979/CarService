@@ -4,7 +4,7 @@
 
 Fork and clone the repository.
 
-Install dependencies
+### Install dependencies
 
 `npm install`
 
