@@ -1,7 +1,5 @@
 const { Pool } = require('pg');
 
-// const PG_URI = 'postgres://dzrtdkmo:k_B18EgDOuStmN8qYFUCDvFrHXOD__Ym@queenie.db.elephantsql.com:5432/dzrtdkmo';
-
 const config = {
   max: 5,
   idleTimeoutMillis: 30000,
