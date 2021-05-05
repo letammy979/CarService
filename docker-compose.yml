@@ -1,0 +1,17 @@
+version: "3"
+services:
+  dev:
+    image: "carservice/cs-prod"
+    container_name: "cs-prod"
+    ports: ["3000:3000"]
+    volumes: [.:/usr/src/app, node_modules:/usr/src/app/node_modules]
+    command: "npm start"
+    depends_on: [postgres-db]
+  postgres-db:
+    image: "carservice/cs-prod"
+    container_name: "cs-prod"
+    environment: ["POSTGRES_PASSWORD=admin", "POSTGRES_USER=csadmin", "POSTGRES_DB=csdb"]
+    volumes: [dev-db-volume:/var/lib/postgresql/data]
+volumes:
+  node_modules: {}
+  dev-db-volume: {}

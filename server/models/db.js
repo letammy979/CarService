@@ -1,9 +1,21 @@
 const { Pool } = require('pg');
 
-const PG_URI = 'postgres://dzrtdkmo:k_B18EgDOuStmN8qYFUCDvFrHXOD__Ym@queenie.db.elephantsql.com:5432/dzrtdkmo';
+// const PG_URI = 'postgres://dzrtdkmo:k_B18EgDOuStmN8qYFUCDvFrHXOD__Ym@queenie.db.elephantsql.com:5432/dzrtdkmo';
 
-const pool = new Pool({
-  connectionString: PG_URI,
+const config = {
+  max: 5,
+  idleTimeoutMillis: 30000,
+  user: 'csadmin',
+  database: 'csdb',
+  password: 'admin',
+  host: 'postgres-db',
+  port: 5432
+};
+
+const pool = new Pool(config);
+
+pool.on('error', function (err, client) {
+  console.error('idle client error', err.message, err.stack);
 });
 
 //export the query method for passing queries to the pool
